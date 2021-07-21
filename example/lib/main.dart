@@ -94,7 +94,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                   Builder(builder: (BuildContext context) {
                     return FlatButton(
                       onPressed: () => FlutterStatusbarcolor.getStatusBarColor()
-                          .then((Color color) {
+                          .then((Color? color) {
+                        if (color == null) {
+                          return;
+                        }
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text(color.toString()),
                           backgroundColor: color,
@@ -180,7 +183,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                     return FlatButton(
                       onPressed: () =>
                           FlutterStatusbarcolor.getNavigationBarColor()
-                              .then((Color color) {
+                              .then((Color? color) {
+                        if (color == null) {
+                          return;
+                        }
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text(color.toString()),
                           backgroundColor: color,
